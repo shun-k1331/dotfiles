@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES=`find $HOME/Dotfiles -name '.*' | grep -v 'dotfiles/.git$' | perl -nle 'm!dotfiles/(.+)$! and print $1'`
+DOTFILES=`find $HOME/Dotfiles -name '.*' | grep -v 'dotfiles/.git$' | perl -nle 'm!Dotfiles/(.+)$! and print $1'`
 
 
 for file in ${DOTFILES[@]}
