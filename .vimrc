@@ -12,9 +12,9 @@ set nocompatible
 set history=1000
 "
 "--------------------------------------------------------------------
-"aプラグイン管理関連
+"プラグイン管理関連
 " NeoBundleで管理してるプラグインを読み込む
-"source ~/.vimrc.bundle
+source ~/.vimrc.bundle
 "--------------------------------------------------------------------
 "Bundleで管理してるプラグインを読み込む
 "source ~/.vimrc.bundle
@@ -87,7 +87,6 @@ set noexpandtab
 "set cindent
 " コマンドを補完する
 set wildmenu
-filetype plugin indent on
 "--------------------------------------------------------------------
 " ファイル関連
 "
@@ -95,11 +94,11 @@ filetype plugin indent on
 set backupdir=/Users/S_Kudou/.vim_backup
 "set backupdir=/home/vagrant/.vim_backup
 "ファイルの保存ダイアログの初期ディレクトリをバッファファイル位置に指定
-set browsedir=buffer
+"set browsedir=buffer
 " クリップボードをWindowsと連携
 set clipboard=unnamed
 " スワップファイル用のディレクトリ
-set directory=/Users/S_Kudou/.vim_backup
+"set directory=/Users/S_Kudou/.vim_backup
 "set directory=/home/vagrant/.vim_backup
 " バックアップファイルの拡張子を指定
 set backupext=.bk
@@ -120,7 +119,24 @@ set fileencodings=ja_JP.utf-8
 "--------------------------------------------------------------------
 " マップ定義
 "
-" 今は何もなし
+
+" 挿入モードでのキーマップ
+inoremap <silent> jj <ESC>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-f> <PageDown>
+inoremap <C-b> <PageUp>
+inoremap <Nul> <Enter>
+
+" 引用符, 括弧の設定
+""inoremap { {}<Left>
+""inoremap [ []<Left>
+""inoremap ( ()<Left>
+""inoremap " ""<Left>
+""inoremap ' ''<Left>
+""inoremap <> <><Left>
 
 "--------------------------------------------------------------------
 " オートコマンド
@@ -152,4 +168,7 @@ augroup END
 " 全角スペースを視覚化
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
 au BufNewFile, BufRead * match ZenkakuSpace /　/
+"--------------------------------------------------------------------
+"プラグイン設定関連
+source ~/.vimrc.neocomplete
 

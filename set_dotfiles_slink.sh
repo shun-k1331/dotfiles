@@ -5,6 +5,6 @@ DOTFILES=`find $HOME/dotfiles -name '.*' | grep -v 'dotfiles/.git$' | perl -nle 
 
 for file in ${DOTFILES[@]}
 do
-	rm -f $HOME/$file
+    rm -f $HOME/$file
     ln -s $HOME/dotfiles/$file $HOME/$file
 done

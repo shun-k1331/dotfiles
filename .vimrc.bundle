@@ -1,0 +1,52 @@
+
+"Bundle の設定
+
+set nocompatible               " Be iMproved
+
+filetype off
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Recommended to install
+NeoBundle 'Shougo/vimproc', {
+        \ 'build' : {
+                \ 'windows' : 'make -f make_mingw32.mak',
+                \ 'cygwin' : 'make -f make_cygwin.mak',
+                \ 'mac' : 'make -f make_mac.mak',
+                \ 'unix' : 'make -f make_unix.mak',
+        \ },
+\ }
+
+" My Bundles here:
+"
+" Original repos on github
+if has('lua')
+    NeoBundle 'Shougo/neocomplete.vim'
+else
+    NeoBundle 'Shougo/neocomplcache'
+endif
+NeoBundle 'Shougo/neosnippet'
+NeoBundle "Shougo/neosnippet-snippets"
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/unite-build'
+NeoBundle 'tpope/vim-surround'
+"NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'altercation/vim-colors-solarized'
+" vim-scripts repos
+" Non github repos
+" Non git repos
+
+filetype plugin indent on     " Required!
+
+" Installation check.
+NeoBundleCheck
