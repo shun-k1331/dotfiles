@@ -9,7 +9,7 @@
 " viとの互換を取らない
 set nocompatible
 " コマンド、検索パターンを50個まで履歴に残す
-set history=1000
+set history=10000
 "ヘルプを日本語化
 set helplang=ja
 ".vimrcの更新を自動で読み込み
@@ -42,16 +42,17 @@ set ruler
 " タブや改行を表示する
 set list
 " 不可視文字を表示
-set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set listchars=tab:>-,trail:-,extends:>,precedes:<,eol:\ 
 " 入力中のコマンドをステータスに表示する
 set showcmd
 " 括弧入力時の対応する括弧を表示
 set showmatch
+" 対応括弧に<と>のペアを追加
+set matchpairs& matchpairs+=<:>
 " ステータスラインを常に表示
 set laststatus=2
 " ステータスラインに表示する情報の設定
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=¥%03.3b]\ [HEX=¥%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-set laststatus=2				" ステータスラインを2行に
 " ステータスラインの色
 hi StatusLine   term=NONE cterm=NONE ctermfg=black ctermbg=white
 " ハイライト
@@ -61,6 +62,11 @@ if &t_Co > 2 || has("gui_running")
         " 検索結果文字列のハイライトを有効にする
         set hlsearch
 endif
+" vim7.4エンジン用正規表現エンジン設定
+" 0 : 自動選択
+" 1 : 旧エンジン
+" 2 : NFAエンジン
+set regexpengine=1
 "--------------------------------------------------------------------
 " 編集、文書関連
 "
@@ -89,21 +95,34 @@ set noexpandtab
 "set cindent
 " コマンドを補完する
 set wildmenu
+" ビープ音を消す
+set vb t_vb=
+set novisualbell
+" マウスモード有効
+set mouse=a
+" xtermとscreen対応
+set ttymouse=xterm2
+" コマンドを画面最下部に表示する
+set showcmd
+" クリップボードをWindowsと連携
+set clipboard+=unnamed
+set clipboard=unnamed
 "--------------------------------------------------------------------
 " ファイル関連
 "
-" バックアップファイルを作成する
+" バックアップファイルを作成しないようにする
+"set nowritebackup
+" バックアップする
+set backup
+" バックアップディレクトリを指定
 set backupdir=/Users/S_Kudou/.vim_backup
 "set backupdir=/home/vagrant/.vim_backup
-"ファイルの保存ダイアログの初期ディレクトリをバッファファイル位置に指定
-"set browsedir=buffer
-" クリップボードをWindowsと連携
-set clipboard=unnamed
-" スワップファイル用のディレクトリ
-"set directory=/Users/S_Kudou/.vim_backup
-"set directory=/home/vagrant/.vim_backup
 " バックアップファイルの拡張子を指定
 set backupext=.bk
+" undoファイル関連設定
+" undodir設定
+set undodir=/Users/S_Kudou/.vim_backup
+set noundofile
 "--------------------------------------------------------------------
 " 国際化関連
 "
@@ -133,12 +152,17 @@ inoremap <C-b> <PageUp>
 inoremap <Nul> <Enter>
 
 " 引用符, 括弧の設定
-""inoremap { {}<Left>
-""inoremap [ []<Left>
-""inoremap ( ()<Left>
-""inoremap " ""<Left>
-""inoremap ' ''<Left>
-""inoremap <> <><Left>
+inoremap { {}<Left>
+inoremap [ []<Left>
+inoremap ( ()<Left>
+"inoremap " ""<Left>
+"inoremap ' ''<Left>
+inoremap < <><Left>
+
+" 入力モード中に素早くJJと入力した場合はESCとみなす
+inoremap jj <Esc>
+" ESCを二回押すことでハイライトを消す
+nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
 "--------------------------------------------------------------------
 " オートコマンド
@@ -177,3 +201,9 @@ source ~/.vimrc.neocomplete
 " unite-outline
 let g:unite_split_rule = 'botright'
 noremap ,u <ESC>:Unite -vertical -winwidth=40 outline<Return>
+noremap ,f <ESC>:Unite -vertical -winwidth=40 file<Return>
+
+"--------------------------------------------------------------------
+"ファイルタイプ別設定関連
+source ~/.vimrc.php
+"--------------------------------------------------------------------
