@@ -14,7 +14,9 @@ set history=10000
 set helplang=ja
 ".vimrcの更新を自動で読み込み
 set autoread
-"
+" 日本語ヘルプ対応
+helptags ~/.vim/doc
+set helplang=ja,en
 "--------------------------------------------------------------------
 "プラグイン管理関連
 " NeoBundleで管理してるプラグインを読み込む
@@ -202,6 +204,28 @@ source ~/.vimrc.neocomplete
 let g:unite_split_rule = 'botright'
 noremap ,u <ESC>:Unite -vertical -winwidth=40 outline<Return>
 noremap ,f <ESC>:Unite -vertical -winwidth=40 file<Return>
+
+" Extend Ctags setting
+if has('path_extra')
+    set tags+=tags,$HOME/DEVELOP/tags;
+endif
+
+" taglist.vim setting
+"set tags = tags
+" ctagsのコマンド
+let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+" 現在表示中のファイルのみのタグしか表示しない
+let Tlist_Show_One_File = 1
+" 右側にtag listのウインドうを表示する
+let Tlist_Use_Right_Window = 1
+" taglistのウインドウだけならVimを閉じる
+let Tlist_Exit_OnlyWindow = 1
+" \lでtaglistウインドウを開いたり閉じたり出来るショートカット
+map <silent> <leader>l :TlistToggle<CR>
+
+" Syntastic設定
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
 
 "--------------------------------------------------------------------
 "ファイルタイプ別設定関連
