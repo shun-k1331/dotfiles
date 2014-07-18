@@ -43,6 +43,8 @@ set title
 set ruler
 " タブや改行を表示する
 set list
+" カラー設定
+colorscheme delek
 " 不可視文字を表示
 set listchars=tab:>-,trail:-,extends:>,precedes:<,eol:\ 
 " 入力中のコマンドをステータスに表示する
