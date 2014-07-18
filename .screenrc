@@ -1,0 +1,31 @@
+#-----------------------#
+# screenrc setting
+# by shun kudou
+#-----------------------#
+# Escape key is C-t,
+escape ^Tt
+
+# 文字コード設定(UTF-8)
+defencoding utf-8
+
+# ログスクロールバック (10000行)
+defscrollback 10000
+
+# ヒープ音をOFF
+vbell off
+
+# スタートアップメッセージ OFF
+startup_message off
+
+# オートデタッチ ON
+autodetach on
+
+# logging
+logfile /home/kudo/screen_log/screen-%n-%H-%Y%m%d-%c:%s-%t.log
+log on
+deflog on
+
+# hardstatus and caption
+hardstatus on
+hardstatus alwayslastline '%{= .b}%H%{-} %L=%-w%45L>%{=u b.}%n %t%{-}%+w %-17<%=%m/%d %02c:%s'
+caption always "%{=r dg}%H[%n]: %c %{-}%`%-w%{=b bw}%n %t%{-}%+w"
