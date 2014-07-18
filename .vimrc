@@ -8,7 +8,7 @@
 "
 " viとの互換を取らない
 set nocompatible
-" コマンド、検索パターンを50個まで履歴に残す
+" コマンド、検索パターンを10000個まで履歴に残す
 set history=10000
 "ヘルプを日本語化
 set helplang=ja
