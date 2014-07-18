@@ -1,23 +1,95 @@
 " neocomplete用設定
-
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_ignore_case = 1
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1 " 起動時に有効化
+" 補完が自動で開始される文字数
+let g:neocomplete#auto_completion_start_length = 3
+" smarrt case有効化。 大文字が入力されるまで大文字小文字の区別を無視する
 let g:neocomplete#enable_smart_case = 1
+" camle caseを有効化。大文字を区切りとしたワイルドカードのように振る舞う
+let g:neocomplete#enable_camel_case_completion = 0
+" _(アンダーバー)区切りの補完を有効化
+let g:neocomplete#enable_underbar_completion = 1
+" シンタックスをキャッシュするときの最小文字長
+let g:neocomplete#min_syntax_length = 3
+" neocompleteを自動的にロックするバッファ名のパターン
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" -入力による候補番号の表示
+let g:neocomplete#enable_quick_match = 1
+" 補完候補の一番先頭を選択状態にする(AutoComplPopと似た動作)
+let g:neocomplete#enable_auto_select = 1
+"ポップアップメニューで表示される候補の数。初期値は100
+let g:neocomplete#max_list = 15
 
+let g:neocomplete#enable_ignore_case = 1
+let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
+let g:neocomplete#enable_fuzzy_completion = 0
+
+"ctagsへのパス
+let g:neocomplete#ctags_program = '/usr/bin/ctags'
+"インクルード文のパターンを指定
+let g:neocomplete#include_patterns = {
+	\ 'c' : '^\s*#\s*include',
+	\ 'cc' : '^\s*#\s*include',
+	\ 'cpp' : '^\s*#\s*include',
+	\ 'ruby' : '^\s*require',
+	\ 'perl' : '^\s*use',
+	\ }
+
+" Define dictionary.
+let g:neocomplete#dictionary_filetype_lists = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scala' : $HOME.'/.vim/bundle/vim-scala/dict/scala.dict',
+    \ 'java' : $HOME.'/.vim/dict/java.dict',
+    \ 'c' : $HOME.'/.vim/dict/c.dict',
+    \ 'cpp' : $HOME.'/.vim/dict/cpp.dict',
+    \ 'cc' : $HOME.'/.vim/dict/cpp.dict',
+    \ 'javascript' : $HOME.'/.vim/dict/javascript.dict',
+    \ 'ocaml' : $HOME.'/.vim/dict/ocaml.dict',
+    \ 'perl' : $HOME.'/.vim/dict/perl.dict',
+    \ 'php' : $HOME.'/.vim/dict/php.dict',
+    \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
+    \ 'vm' : $HOME.'/.vim/dict/vim.dict'
+    \ }
+
+" Enable omni completion.
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType cpp set omnifunc=cppcomplete#Complete
+autocmd FileType cc set omnifunc=cccomplete#Complete
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#omni_patterns')
+	let g:neocomplete#omni_patterns = {}
+endif
+let g:neocomplete#omni_patterns.c = '\%(\.\|->\)\h\w*'
+let g:neocomplete#omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+let g:neocomplete#omni_patterns.cc = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+
+" Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
 endif
-let g:neocomplete#keyword_patterns._ = '\h\w*'
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-if !exists('g:neocomplete#sources#dictionary#dictionaries')
-  let g:neocomplete#sources#dictionary#dictionaries = {}
-endif
-let dict = g:neocomplete#sources#dictionary#dictionaries
+" <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
-let g:neocomplete#sources#buffer#disabled_pattern = '\.log\|\.log\.\|\.jax\|Log.txt'
-let g:neocomplete#enable_ignore_case = 0
-let g:neocomplete#enable_smart_case  = 1
-let g:neocomplete#enable_fuzzy_completion = 0
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+" SuperTab like snippets behavior.
+" imap <expr><TAB> neosnippet#jumpable() ?
+" \"\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ?
+" \"\<C-n>" : "\<TAB>"
+imap <expr><TAB> pumvisible() ?
+			\ "\<C-n>" : neosnippet#jumpable() ?
+			\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#jumpable() ?
+			\"\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
 
 call neocomplete#custom_source('_', 'sorters',  ['sorter_length'])
 call neocomplete#custom_source('_', 'matchers', ['matcher_head'])
@@ -28,3 +100,4 @@ inoremap <expr><C-e>  pumvisible() ? neocomplete#close_popup() : "<End>"
 inoremap <expr><C-c>  neocomplete#cancel_popup()
 inoremap <expr><C-u>  neocomplete#undo_completion()
 inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
+

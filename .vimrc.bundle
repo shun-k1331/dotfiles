@@ -45,7 +45,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'taglist.vim'
 NeoBundle 'mattn/sonictemplate-vim'
 NeoBundle 'vim-scripts/DoxygenToolkit.vim'
-NeoBundle 'mattn/zencoding-vim'
+NeoBundle 'mattn/emmet-vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'taichouchou2/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
@@ -61,6 +61,7 @@ NeoBundle 'ujihisa/unite-rake'
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tpope/vim-fugitive'
 " vim-scripts repos
 " Non github repos
 " Non git repos
