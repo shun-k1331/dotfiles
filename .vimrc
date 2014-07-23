@@ -186,6 +186,12 @@ function! GetStatusEx()
         return str
 endfunction
 
+" ctags用更新コマンド定義
+" ctagsコマンドをvim内で起動し、再描画する
+function! Pome()
+	:exe "silent! !ctags -R $HOME/DEVELOP" | redraw
+endfunction
+command! Pome :call Pome()
 "--------------------------------------------------------------------
 " 入力モード時、ステータスラインのカラーを変更
 augroup InsertHook
@@ -206,6 +212,7 @@ source ~/.vimrc.neocomplete
 let g:unite_split_rule = 'botright'
 noremap ,u <ESC>:Unite -vertical -winwidth=40 outline<Return>
 noremap ,f <ESC>:Unite -vertical -winwidth=40 file<Return>
+noremap ,t <ESC>:Unite tab<Return>
 
 " Extend Ctags setting
 if has('path_extra')
