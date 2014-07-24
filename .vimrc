@@ -66,11 +66,22 @@ if &t_Co > 2 || has("gui_running")
         " 検索結果文字列のハイライトを有効にする
         set hlsearch
 endif
+" タブページの設定
+set showtabline=2	" 常にタブラインを表示
+" ノーマルモードに戻った時に日本語入力をオフにする
+set imdisable
+" Insertモード、ReplaceモードまたはVisualモードで最終行にメッセージを表示する
+set showmode
 " vim7.4エンジン用正規表現エンジン設定
 " 0 : 自動選択
 " 1 : 旧エンジン
 " 2 : NFAエンジン
 set regexpengine=1
+" includeディレクトリ設定
+set path=.,/usr/include,/usr/local/include,/usr/lib/gcc/x86_64-linux-gnu/4.4/include,/usr/lib/glib-2.0/include
+" 個別includeディレクトリ設定
+"let $GITDIR = "/home/kudo/DEVELOP/GIT_srcdir"
+"set path+=$GITDIR/CM_root/include
 "--------------------------------------------------------------------
 " 編集、文書関連
 "
@@ -168,6 +179,15 @@ inoremap jj <Esc>
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
+" .vimrcを開く
+nnoremap ,et :tabnew<CR>
+nnoremap ,ev :tabnew $HOME/.vimrc<CR>
+nnoremap ,eb :tabnew $HOME/.vimrc.bundle<CR>
+nnoremap ,en :tabnew $HOME/.vimrc.neocomplete<CR>
+" source ~/.vimrc を実行する。
+nnoremap ,rv :source $HOME/.vimrc<CR>
+" VimShell 起動
+nnoremap ,sh :VimShell<CR>
 "--------------------------------------------------------------------
 " オートコマンド
 " 今は何もなし
