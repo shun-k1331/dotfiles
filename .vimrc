@@ -179,6 +179,9 @@ inoremap jj <Esc>
 " ESCを二回押すことでハイライトを消す
 nmap <silent> <Esc><Esc> :nohlsearch<CR>
 
+" ノーマルモードで改行を挿入
+nmap <CR> i<CR><ESC>
+
 " .vimrcを開く
 nnoremap ,et :tabnew<CR>
 nnoremap ,ev :tabnew $HOME/.vimrc<CR>
