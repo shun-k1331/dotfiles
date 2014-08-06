@@ -53,6 +53,9 @@ set showcmd
 set showmatch
 " 対応括弧に<と>のペアを追加
 set matchpairs& matchpairs+=<:>
+" ウィンドウ分割時に右や下に分割
+set splitright
+set splitbelow
 " ステータスラインを常に表示
 set laststatus=2
 " ステータスラインに表示する情報の設定
@@ -90,7 +93,6 @@ set path=.,/usr/include,/usr/local/include,/usr/lib/gcc/x86_64-linux-gnu/4.4/inc
 " eol           : 改行の削除を許す
 " start         : 挿入モードの開始位置での削除を許す
 set backspace=indent,eol,start
-
 " 新しい行と直前の行と同じインデントにする
 "set autoindent
 " Tab文字を画面上の見た目で何文字幅にされるか設定
