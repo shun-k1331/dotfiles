@@ -240,6 +240,7 @@ let g:unite_split_rule = 'botright'
 noremap ,u <ESC>:Unite -vertical -winwidth=40 outline<Return>
 noremap ,f <ESC>:Unite -vertical -winwidth=40 file<Return>
 noremap ,t <ESC>:Unite tab<Return>
+noremap ,b <ESC>:Unite buffer<Return>
 
 " Extend Ctags setting
 if has('path_extra')
