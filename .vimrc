@@ -56,6 +56,8 @@ set matchpairs& matchpairs+=<:>
 " ウィンドウ分割時に右や下に分割
 set splitright
 set splitbelow
+" コマンドラインウィンドウの幅
+set cmdwinheight=20
 " ステータスラインを常に表示
 set laststatus=2
 " ステータスラインに表示する情報の設定
