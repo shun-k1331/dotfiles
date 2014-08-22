@@ -100,4 +100,5 @@ inoremap <expr><C-e>  pumvisible() ? neocomplete#close_popup() : "<End>"
 inoremap <expr><C-c>  neocomplete#cancel_popup()
 inoremap <expr><C-u>  neocomplete#undo_completion()
 inoremap <expr><C-h>  neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><CR>   pumvisible() ? "\<C-n>" . neocomplete#close_popup()  : "<CR>"
 
