@@ -211,4 +211,16 @@ esac
 # rbenv setting
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# ruby gem setting
+export GEM_HOME=$HOME/gems
+export GEM_PATH=$GEM_HOME
+export PATH="$GEM_HOME/bin:$PATH"
+
+# プロキシ用シェル設定
+#source ${HOME}/bin/proxy.sh
+
+# git用ローカルホストSSL証明不要設定
+export GIT_SSL_NO_VERIFY=1
+
 # EOF
