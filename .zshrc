@@ -208,6 +208,14 @@ case ${OSTYPE} in
 	;;
 esac
 
+# vcsの表示
+zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'
+zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'
+# プロンプト表示直前にvcs_info呼び出し
+precmd() { vcs_info }
+# プロンプト表示
+PROMPT='[${vcs_info_msg_0_}]:%~/:$%f '
+
 # rbenv setting
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
