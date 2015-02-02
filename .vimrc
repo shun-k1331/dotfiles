@@ -9,7 +9,7 @@
 " viとの互換を取らない
 set nocompatible
 " コマンド、検索パターンを10000個まで履歴に残す
-set history=10000
+set history=1000
 "ヘルプを日本語化
 set helplang=ja
 ".vimrcの更新を自動で読み込み
@@ -46,7 +46,7 @@ set list
 " カラー設定
 colorscheme delek
 " 不可視文字を表示
-set listchars=tab:>-,trail:-,extends:>,precedes:<,eol:\ 
+set listchars=tab:\ ,trail:-,extends:>,precedes:<,eol:\ 
 " 入力中のコマンドをステータスに表示する
 set showcmd
 " 括弧入力時の対応する括弧を表示
@@ -87,6 +87,11 @@ set path=.,/usr/include,/usr/local/include,/usr/lib/gcc/x86_64-linux-gnu/4.4/inc
 " 個別includeディレクトリ設定
 "let $GITDIR = "/home/kudo/DEVELOP/GIT_srcdir"
 "set path+=$GITDIR/CM_root/include
+" vimdiffのハイライト
+hi DiffAdd    ctermfg=black ctermbg=2
+hi DiffChange ctermfg=black ctermbg=3
+hi DiffDelete ctermfg=black ctermbg=6
+hi DiffText   ctermfg=black ctermbg=7
 "--------------------------------------------------------------------
 " 編集、文書関連
 "
