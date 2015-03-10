@@ -62,6 +62,8 @@ NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'vim-scripts/Align'
+
 " vim-scripts repos
 " Non github repos
 " Non git repos
