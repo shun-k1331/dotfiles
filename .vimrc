@@ -42,11 +42,12 @@ set title
 " ルーラーを表示
 set ruler
 " タブや改行を表示する
-set list
+"set list
 " カラー設定
 colorscheme delek
 " 不可視文字を表示
-set listchars=tab:\ ,trail:-,extends:>,precedes:<,eol:\ 
+" set listchars=tab:\ ,trail:-,extends:>,precedes:<,eol:\ 
+set listchars=eol:¬,tab:▸\ 
 " 入力中のコマンドをステータスに表示する
 set showcmd
 " 括弧入力時の対応する括弧を表示
